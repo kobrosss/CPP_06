@@ -46,6 +46,7 @@ ScalarConverter::LiteralType ScalarConverter::detect(const std::string &s)
 		return FLOAT;
 	if (dot)
 		return DOUBLE;
+	return(INT);
 }
 
 bool ScalarConverter::isPseudo(const std::string &s)
@@ -77,7 +78,7 @@ void ScalarConverter::printChar(double i)
 	else if (!std::isprint(static_cast<char>(i)))
 		std::cout << "Non displayable\n";
 	else
-		std::cout << "'" << static_cast<char>(i) << "\n";
+		std::cout << "'" << static_cast<char>(i) << "'" << "\n";
 }
 
 void ScalarConverter::printFloat(double i)
@@ -108,7 +109,7 @@ void ScalarConverter::printInt(double i)
 
 void ScalarConverter::printDouble(double i)
 {
-	std::cout << "double :";
+	std::cout << "double: ";
 
 	if(std::isnan(i))
 		std::cout << "nanf\n";
