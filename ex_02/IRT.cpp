@@ -2,33 +2,61 @@
 
 Base::~Base() {}
 
-Base* generate(void)
+Base *generate(void)
 {
 	int r = std::rand() % 3;
 
-	if(r == 0)
+	if (r == 0)
 	{
-		std::cout << "A class generated";
+		std::cout << "A class generated\n";
 		return new A;
 	}
-	else if(r == 1)
+	else if (r == 1)
 	{
-		std::cout << "B class generated";
+		std::cout << "B class generated\n";
 		return new B;
 	}
 	else
 	{
-		std::cout << "C class generated";
+		std::cout << "C class generated\n ";
 		return new C;
 	}
 }
 
-void identity (Base *p)
+void identity(Base *p)
 {
-	if(dynamic_cast<A*>(p))
-		std::cout << "Pointer with A class";
-	else if (dynamic_cast<B*>(p))
-		std::cout << "Pointer with B class";
-	else if (dynamic_cast<C*>(p))
-		std::cout << "Pointer with C class";
+	if (dynamic_cast<A *>(p))
+		std::cout << "Pointer with A class\n";
+	else if (dynamic_cast<B *>(p))
+		std::cout << "Pointer with B class\n";
+	else if (dynamic_cast<C *>(p))
+		std::cout << "Pointer with C class\n";
+}
+
+void identity(Base &p)
+{
+	try
+	{
+		(void)dynamic_cast<A &>(p);
+		std::cout << "Reference A\n";
+	}
+	catch (...)
+	{
+	}
+	try
+	{
+		(void)dynamic_cast<B &>(p);
+		std::cout << "Reference B\n";
+	}
+	catch (...)
+	{
+	}
+	try
+	{
+		(void)dynamic_cast<C &>(p);
+		std::cout << "Reference C\n";
+	}
+	catch (...)
+	{
+	}
 }
